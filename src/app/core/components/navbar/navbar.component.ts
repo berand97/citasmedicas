@@ -4,28 +4,34 @@ import { MenuItem } from '@core/modelo/menu-item';
 @Component({
   selector: 'app-navbar',
   templateUrl: 'navbar.component.html',
-  styles: [`:host {
-    border: 0 solid #e1e1e1;
-    border-bottom-width: 1px;
-    display: block;
-    height: 48px;
-    padding: 0 16px;
-  }
+  styles: [`
+    .bg-primary { background-color: var(--primary) !important; }
 
-  nav a {
-    color: #8f8f8f;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 48px;
-    margin-right: 20px;
-    text-decoration: none;
-    vertical-align: middle;
-    cursor: pointer;
-  }
+    .bg-light { background-color: var(--light) !important; }
 
-  nav a.router-link-active {
-    color: #106cc8;
-  }`],
+    .bg-grey { background-color: var(--grey) !important; }
+
+    .btn-primary {
+        background-color: var(--primary);
+        border: 0;
+    }
+
+    .btn-primary:hover {
+        background-color: var(--primary);
+    }
+
+    .avatar {
+        max-width: 35px;
+    }
+
+    .btn-search {
+        right: 0;
+    }
+
+    .stat {
+        border-right: 1px solid var(--grey);
+    }
+`],
 })
 export class NavbarComponent implements OnInit {
 
