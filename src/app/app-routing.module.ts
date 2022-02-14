@@ -5,10 +5,12 @@ import { HomeComponent } from '@home/home.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, canActivate: [SecurityGuard]  },
-  { path: 'producto', loadChildren: () => import('@producto/producto.module').then(mod => mod.ProductoModule) }
-  
+  { path: 'auth', loadChildren: ()=> import('./feature/auth/auth.module').then(mod => mod.AuthModule)},
+  { path: 'dashboard', loadChildren: ()=> import('./feature/dashboard/dashboard.module').then(mod => mod.DashboardModule)},
+  { path: 'producto', loadChildren: () => import('@producto/producto.module').then(mod => mod.ProductoModule) },
+  { path: '**', redirectTo: '/auth'},
+
 ];
 
 @NgModule({
