@@ -7,3 +7,17 @@
 @import "assets/scss/partials/grids";
 @import "assets/scss/partials/global";
 @import "assets/scss/partials/buttons";
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+/* Importing Datepicker SCSS file. */
+@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
+
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+a{
+  text-decoration: none;
+}
