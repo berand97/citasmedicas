@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">imagen</div>
+    <div class="col">
+      <h4>Iniciar sesión</h4>
+      <form class="form" [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="form-group">
+          <input type="text" placeholder="jhondoe@gmail.com" formControlName="email">
+        </div>
+        <div class="form-group">
+          <input type="password" formControlName="password">
+        </div>
+        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+      </form>
+      <span><a class="" routerLink="/auth/forgot-password"> Recuperar contraseña</a></span>
+    </div>
+  </div>
+</div>
