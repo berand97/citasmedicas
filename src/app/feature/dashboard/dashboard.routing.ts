@@ -1,13 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { SettingsComponent } from './pages/settings/settings.component';
+import { StatisticsComponent } from './pages/statistics/statistics.component';
+import { UsersComponent } from './pages/users/users.component';
 
 
 const routes: Routes = [
   {
-    path:'', component: DashboardComponent,
-    children:[
-      {path: 'dashboard', component: DashboardComponent}
+    path: '', component: DashboardComponent,
+    children: [
+      { path: 'users', component: UsersComponent },
+      { path: 'profile', component: ProfileComponent },
+      { path: 'statistics', component: StatisticsComponent },
+      { path: 'settings', component: SettingsComponent }
     ]
   }
 
