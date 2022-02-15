@@ -65,7 +65,7 @@ pipeline {
         }
         */
 
-      stage('Sonar Scanner Coverage') {
+      stage('Static Code Analysis') {
 			steps{
         echo '------------>Análisis de código estático<------------'
 				sonarqubeMasQualityGatesP(
