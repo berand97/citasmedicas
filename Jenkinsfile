@@ -24,14 +24,14 @@ pipeline {
             steps{
                 echo "------------>Checkout<------------"
                 checkout([
-                    $class: 'GitSCM', 
-                    branches: [[name: '*/master']], 
-                    doGenerateSubmoduleConfigurations: false, 
-                    extensions: [], 
-                    gitTool: 'Default', 
-                    submoduleCfg: [], 
+                    $class: 'GitSCM',
+                    branches: [[name: '*/master']],
+                    doGenerateSubmoduleConfigurations: false,
+                    extensions: [],
+                    gitTool: 'Default',
+                    submoduleCfg: [],
                     userRemoteConfigs: [[
-                        credentialsId: 'GitHub_berand97', 
+                        credentialsId: 'GitHub_berand97',
                         url:'https://github.com/berand97/adn-angular'
                     ]]
                 ])
@@ -50,7 +50,7 @@ pipeline {
             }
         }
 
-        stage('Tests') {
+        stage('Test') {
             steps {
                 sh 'npm run test -- --watch=false --browsers ChromeHeadless'
             }
@@ -61,28 +61,20 @@ pipeline {
             steps{
                 echo "------------>Testing Protractor<------------"
                 sh 'npm run e2e --'
-            } 
+            }
         }
         */
 
-        stage('Static Code Analysis') {
+      stage('Sonar Scanner Coverage') {
 			steps{
-                echo '------------>Análisis de código estático<------------'
+        echo '------------>Análisis de código estático<------------'
 				sonarqubeMasQualityGatesP(
-                sonarKey:'co.com.ceiba.adn:adn-angular-andres.patino',
-				sonarName:'CeibaADN-adnAngular-andres.patino',
-				sonarPathProperties:'./sonar-project.properties')
+        sonarKey:'co.com.ceiba.adn:citas.medicas-andres.patiño',
+        sonarName:'CeibaADN-CitasMedicas(andres.patiño)',
+        sonarPathProperties:'./sonar-project.properties')
+
 			}
 		}
-
-        /* stage('Sonar Scanner Coverage') {
-            steps{
-                echo '------------>Análisis de código estático<------------'
-                withSonarQubeEnv('Sonar') {
-                    sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=sonar-project.properties" 
-                }
-            }
-        } */
     }
 
     post{
@@ -94,7 +86,9 @@ pipeline {
         }
         failure {
             echo 'This will run only if failed'
-            mail (to: 'andres.patino@ceiba.com.co', subject: "Failed Pipeline:${currentBuild.fullDisplayName}",body: "Something is wrong with ${env.BUILD_URL}") 
+            mail (to: 'andres.patino@ceiba.com.co',
+            subject: "Failed Pipeline:${currentBuild.fullDisplayName}",
+            body: "Something is wrong with ${env.BUILD_URL}")
         }
         unstable {
             echo 'This will run only if the run was marked as unstable'
