@@ -32,7 +32,7 @@ pipeline {
                     submoduleCfg: [],
                     userRemoteConfigs: [[
                         credentialsId: 'GitHub_berand97',
-                        url:'https://github.com/berand97/adn-angular'
+                        url:'https://github.com/berand97/citasmedicas'
                     ]]
                 ])
             }
@@ -68,7 +68,7 @@ pipeline {
       stage('Static Code Analysis') {
 			steps{
         echo '------------>Análisis de código estático<------------'
-				sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:citas.medicas-andres.patino',
+				sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:citasmedicas-andres.patino',
         sonarName:'CeibaADN-CitasMedicas(andres.patino)',
         sonarPathProperties:'./sonar-project.properties')
 
