@@ -10,6 +10,10 @@ import { CoreModule } from '@core/core.module';
 import { StatisticsComponent } from './pages/statistics/statistics.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { UsersComponent } from './pages/users/users.component';
+import { CreateAppointmentComponent } from './components/create-appointment/create-appointment.component';
+import { PanelComponent } from './pages/panel/panel.component';
+import { AppoinmentForTodayComponent } from './components/appoinment-for-today/appoinment-for-today.component';
+
 
 
 
@@ -19,13 +23,16 @@ import { UsersComponent } from './pages/users/users.component';
     ProfileComponent,
     StatisticsComponent,
     SettingsComponent,
-    UsersComponent
+    UsersComponent,
+    CreateAppointmentComponent,
+    PanelComponent,
+    AppoinmentForTodayComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     CoreModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
   ]
 })
 export class DashboardModule { }
