@@ -71,7 +71,6 @@ pipeline {
 				sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:citasmedicas-andres.patino',
         sonarName:'CeibaADN-CitasMedicas(andres.patino)',
         sonarPathProperties:'./sonar-project.properties')
-
 			}
 		}
     }
