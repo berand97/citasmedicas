@@ -9,10 +9,6 @@ import { CoreModule } from '@core/core.module';
 import { CookieService } from 'ngx-cookie-service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +20,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ProductoModule,
     CoreModule,
     BrowserAnimationsModule,
-    NgbModule
+    NgbModule,
+
+
   ],
   providers: [CookieService],
     bootstrap: [AppComponent],
