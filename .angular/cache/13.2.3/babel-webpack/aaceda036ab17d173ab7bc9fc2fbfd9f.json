@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const MEDICALCATEGORIES = [{\n  name: 'Medico General',\n  value: 10\n}, {\n  name: 'Otorrinoralingología',\n  value: 50\n}, {\n  name: 'Odontología',\n  value: 40\n}, {\n  name: 'Psicología',\n  value: 120\n}, {\n  name: 'Ginecologoía',\n  value: 80\n}];","map":null,"metadata":{},"sourceType":"module"}
