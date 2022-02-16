@@ -1,20 +1,9 @@
-<div class="d-flex" id="content-wrapper">
-
-  <!-- Sidebar -->
+<div class="container-dashboard">
   <app-sidebar></app-sidebar>
-  <!-- Fin sidebar -->
-
-  <div class="w-100">
-
-    <!-- Navbar -->
-    <app-navbar></app-navbar>
-    <!-- Fin Navbar -->
-
-    <!-- Page Content -->
-    <div id="content" class="bg-white w-100 p-2">
-      <router-outlet></router-outlet>
-
+  <div class="wrapper">
+    <app-toolbar></app-toolbar>
+    <div class="main-container">
+      <router-outlet class="p-3"></router-outlet>
     </div>
-
   </div>
 </div>
