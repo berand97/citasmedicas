@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Valor en $ consulta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let category of medicalCategories; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>
+              {{category.name}}
+            </td>
+            <td>{{category.value | currency}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+    <div class="col">
+      <h5>Crear una nueva categoria medica</h5>
+      <button class="btn mt-5" (click)="open()">Crear nueva categoria</button>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,22 @@
-<p>users works!</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Usuario</th>
+      <th scope="col">Documento</th>
+      <th scope="col">Compañia de seguro</th>
+      <th scope="col">Tipo de afiliacion de usuario</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>
+        {{user.name}}
+      </td>
+      <td>{{user.document}}</td>
+      <td>{{user.healtyCompany}}</td>
+      <td>{{user.typeUser}}</td>
+    </tr>
+  </tbody>
+</table>

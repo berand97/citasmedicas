@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Valor en $</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let price of prices; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{price.name}} </td>
+            <td>{{price.type}} </td>
+            <td>{{price.value | currency}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+    <div class="col">
+      <h5>Crear una nuevo cargo o descuento</h5>
+      <button class="btn mt-5" (click)="createCharge()">Crear nueva cargo</button>
+    </div>
+  </div>
+</div>

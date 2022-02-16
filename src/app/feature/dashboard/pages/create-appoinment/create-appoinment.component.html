@@ -1,0 +1,36 @@
+<div class=" col-6 align-items-center">
+  <form>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Numero de documento</label>
+      <input type="number" class="form-control">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" readonly="true">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Tipo de Usuario</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" readonly="true">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Tipo de Consulta</label>
+      <select name="" id="" class="form-control">
+        <option value="">Medico general</option>
+        <option value="">Odontologia</option>
+        <option value="">Otorrinolaringología</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Fecha Consulta</label>
+      <input class="form-control" placeholder="Fecha consulta" bsDatepicker
+        [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-blue' }"
+        [daysDisabled]="[6,0]" [minDate]="minDate" placement="right">
+    </div>
+
+    <div class=" mb-3">
+      <label for="exampleInputEmail1" class="form-label">Gasto Total</label>
+      <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" readonly="true">
+    </div>
+    <button type="submit" class="btn">Crear cita</button>
+  </form>
+</div>
