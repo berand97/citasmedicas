@@ -1,4 +1,4 @@
 export interface MedicalCategory {
-  name: string;
-  value: number;
+  categoryMedicalName: string;
+  priceCategory: number;
 }
