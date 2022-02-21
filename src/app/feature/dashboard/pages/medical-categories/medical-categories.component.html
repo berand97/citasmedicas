@@ -1,6 +1,7 @@
-<div class="container">
+
+<div class="container-fluid">
   <div class="row">
-    <div class="col">
+    <div class="col-lg-12">
       <table class="table table-striped">
         <thead>
           <tr>
@@ -13,17 +14,15 @@
           <tr *ngFor="let category of medicalCategories; index as i">
             <th scope="row">{{ i + 1 }}</th>
             <td>
-              {{category.name}}
+              {{category.categoryMedicalName}}
             </td>
-            <td>{{category.value | currency}}</td>
+            <td>{{category.priceCategory | currency:"COP":"$"}}</td>
           </tr>
         </tbody>
       </table>
-
-    </div>
-    <div class="col">
-      <h5>Crear una nueva categoria medica</h5>
-      <button class="btn mt-5" (click)="open()">Crear nueva categoria</button>
+      <div class="mt-5">
+        <button class="btn mt-5" (click)="open()">Crear nueva categoria</button>
+      </div>
     </div>
   </div>
 </div>
