@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardRoutingModule } from './dashboard.routing';
 
 
@@ -18,7 +18,11 @@ import { MedicalCategoriesComponent } from './pages/medical-categories/medical-c
 import { CreateMedicalCategorieComponent } from './components/create-medical-categorie/create-medical-categorie.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CreateChargeComponent } from './components/create-charge/create-charge.component';
-
+import { CreateUserComponent } from './components/create-user/create-user.component';
+import { AlertModule } from 'ngx-bootstrap/alert';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { DoctorComponent } from './pages/doctor/doctor.component';
+import { CategoriesComponent } from './pages/categories/categories.component';
 
 @NgModule({
   declarations: [
@@ -33,15 +37,21 @@ import { CreateChargeComponent } from './components/create-charge/create-charge.
     HealthCompanyComponent,
     MedicalCategoriesComponent,
     CreateMedicalCategorieComponent,
-    CreateChargeComponent
+    CreateChargeComponent,
+    CreateUserComponent,
+    DoctorComponent,
+    CategoriesComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     CoreModule,
     FormsModule,
+    ReactiveFormsModule,
     DashboardRoutingModule,
     BsDatepickerModule.forRoot(),
+    AlertModule.forRoot(),
+    TabsModule.forRoot(),
 
   ]
 })
