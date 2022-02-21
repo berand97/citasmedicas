@@ -1,6 +1,8 @@
 export interface User {
   name: string;
-  document: number;
+  lastName: string;
+  typeDocument: string
+  numberDocument: number;
   healtyCompany: string;
-  typeUser: string;
+  typeAffiliate: string;
 }
