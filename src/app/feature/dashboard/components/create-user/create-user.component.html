@@ -1,0 +1,39 @@
+<div class=" col-12 p-5">
+  <form [formGroup]="createUserForm" (ngSubmit)="createUser()">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Nombre</label>
+      <input type="text" class="form-control" formControlName="name">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Apellido</label>
+      <input type="text" class="form-control" formControlName="lastName">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Tipo de documento</label>
+      <select class="form-control" formControlName="typeDocument">
+        <option value="Cedula de ciudadania">Cedula de ciudadania</option>
+        <option value="Cedula de extranjeria">Cedula de extranjeria</option>
+        <option value="Pasaporte">Pasaporte</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Numero de documento</label>
+      <input type="number" class="form-control" formControlName="numberDocument">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Compañia de seguro medico</label>
+      <select class="form-control" formControlName="healtyCompany">
+        <option value="Sura">Sura</option>
+        <option value="Coomeva">Coomeva</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Tipo de afiliación del usuario</label>
+      <select class="form-control" formControlName="typeAffiliate">
+        <option value="Contributivo">Contributivo</option>
+        <option value="Subsidiado">Subsidiado</option>
+      </select>
+    </div>
+    <button type="submit" class="btn" (click)="activeModal.close('Close click')">Crear Usuario</button>
+  </form>
+</div>
