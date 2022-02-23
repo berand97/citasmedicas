@@ -1,5 +1,5 @@
-export interface Price {
+export interface Charge {
   name: string;
   type: string;
-  value: number;
+  percent: number;
 }

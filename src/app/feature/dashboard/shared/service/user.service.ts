@@ -3,20 +3,21 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { DashboardModule } from '../../dashboard.module';
 import { User } from '../interfaces/user.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: DashboardModule,
 })
 export class UserService {
 
-  private URL: string = environment.endpoint
+  private URL: string = environment.endpoint;
 
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
     })
-  }
+  };
 
   constructor(
     private http: HttpClient
@@ -26,14 +27,18 @@ export class UserService {
     return this.http.post<User>(this.URL + '/usuarios/', JSON.stringify(body), this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
-      )
+      );
   }
 
   getAll(): Observable<User[]> {
     return this.http.get<User[]>(this.URL + '/usuarios/')
-    .pipe(
-      catchError(this.errorHandler)
-    )
+      .pipe(
+        catchError(this.errorHandler)
+      );
+  }
+
+  getUserId(id: string): Observable<User[]> {
+    return this.http.get<User[]>(`${this.URL}/usuarios?numberDocument=${id}`, this.httpOptions);
   }
 
 
