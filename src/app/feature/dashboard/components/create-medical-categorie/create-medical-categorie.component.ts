@@ -12,9 +12,9 @@ import { MedicalCategoryService } from '../../shared/service/medical-category.se
 export class CreateMedicalCategorieComponent implements OnInit {
 
   createMedicalCategoryForm = this.fb.group({
-    categoryMedicalName:['',[Validators.required]],
-    priceCategory:['', [Validators.required, Validators.minLength(4)]]
-  })
+    categoryMedicalName: ['', [Validators.required]],
+    priceCategory: ['', [Validators.required, Validators.minLength(4)]]
+  });
 
   constructor(
     private fb: FormBuilder,
@@ -26,13 +26,13 @@ export class CreateMedicalCategorieComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  createMedicalCategory(){
-    const body = this.createMedicalCategoryForm.value
+  createMedicalCategory() {
+    const body = this.createMedicalCategoryForm.value;
 
     this.medicalCategory.createMedicalCategory(body)
-    .subscribe(_resp=>{
-      this.modalGlobalService.event.emit('close')
-    })
+      .subscribe( () => {
+        this.modalGlobalService.event.emit('close');
+      });
   }
 
 }

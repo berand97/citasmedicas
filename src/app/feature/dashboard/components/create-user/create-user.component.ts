@@ -18,7 +18,7 @@ export class CreateUserComponent implements OnInit {
     numberDocument: ['', [Validators.required]],
     healtyCompany: ['', [Validators.required]],
     typeAffiliate: ['', [Validators.required]],
-  })
+  });
 
   constructor(
     private fb: FormBuilder,
@@ -33,9 +33,9 @@ export class CreateUserComponent implements OnInit {
 
   createUser() {
     this.userService.createUser(this.createUserForm.value)
-      .subscribe(_resp => {
-        this.modalGlobalService.event.emit('close')
-      })
+      .subscribe( () => {
+        this.modalGlobalService.event.emit('close');
+      });
   }
 
 

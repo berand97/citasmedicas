@@ -1,20 +1,21 @@
 <div class=" col-12 p-5">
-  <form>
+  <form [formGroup]="createChargeForm" (ngSubmit)="createCharge()">
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Nombre del cargo</label>
-      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <input type="text" class="form-control" formControlName="name">
     </div>
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Tipo de cargo</label>
-      <select name="" id="" class="form-control">
-        <option value="">Cargo extra</option>
-        <option value="">Descuento</option>
+      <select name="" id="" class="form-control" formControlName="type">
+        <option [value]="charge.type" *ngFor="let charge of Charges">{{charge.name}}</option>
       </select>
     </div>
     <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Valor del cargo en porcentaje</label>
-      <input type="number" class="form-control">
+      <label class="form-label">Valor del cargo en porcentaje</label>
+      <br>
+      <small>Ingrese valores de 0 a 1 </small>
+      <input type="number" class="form-control" formControlName="percent">
     </div>
-    <button type="submit" class="btn">Crear Cargo</button>
+    <button type="submit" class="btn" [disabled]="createChargeForm.invalid" (click)="activeModal.close('Close click')">Crear Cargo</button>
   </form>
 </div>
