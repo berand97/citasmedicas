@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ModalGlobalService } from '@core/services/modal-global.service';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
@@ -6,12 +6,13 @@ import { CreateUserComponent } from '../../components/create-user/create-user.co
 import { User } from '../../shared/interfaces/user.interface';
 import { UserService } from '../../shared/service/user.service';
 
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent implements OnInit, OnDestroy {
 
 
   users: User[];
@@ -33,7 +34,7 @@ export class UsersComponent implements OnInit {
   }
 
   createUserModal() {
-    const modalRef = this.modalService.open(CreateUserComponent, {size: 'lg'})
+    const modalRef = this.modalService.open(CreateUserComponent, { size: 'lg' });
     modalRef.componentInstance.name = 'Crear Usuario';
   }
 
@@ -41,13 +42,13 @@ export class UsersComponent implements OnInit {
     this.userService.getAll()
       .subscribe((data: User[]) => {
         this.users = data;
-      })
+      });
   }
 
   listenObserver = () => {
     const observer1$ = this.modalGlobalService.event.subscribe(() => {
       this.loadUsers();
-    })
+    });
 
     this.listSubscribers = [observer1$];
   }

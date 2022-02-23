@@ -1,36 +1,64 @@
 <div class=" col-6 align-items-center">
-  <form>
+  <form [formGroup]="createAppoinmentForm" (ngSubmit)="createAppoinment()">
     <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Numero de documento</label>
-      <input type="number" class="form-control">
+      <label class="form-label">Numero de documento</label>
+      <input #numberDocument type="number" class="form-control" formControlName="numberDocument"
+        (blur)="existAffiliate(numberDocument.value)">
     </div>
     <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Nombre</label>
-      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" readonly="true">
+      <label class="form-label">Tipo de documento</label>
+      <input type="text" class="form-control" formControlName="typeDocument" [(ngModel)]="typeDocument" readonly>
     </div>
     <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Tipo de Usuario</label>
-      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" readonly="true">
+      <label class="form-label">Nombre</label>
+      <input type="text" class="form-control" formControlName="name" [(ngModel)]="name" readonly>
     </div>
     <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Tipo de Consulta</label>
-      <select name="" id="" class="form-control">
-        <option value="">Medico general</option>
-        <option value="">Odontologia</option>
-        <option value="">Otorrinolaringología</option>
+      <label class="form-label">Apellido</label>
+      <input type="text" class="form-control" formControlName="lastName" [(ngModel)]="lastName" readonly>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Compañia de seguros</label>
+      <input type="text" class="form-control" formControlName="healtyCompany" [(ngModel)]="healtyCompany" readonly>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Tipo de Afiliación</label>
+      <input type="text" class="form-control" formControlName="typeAffiliate" [(ngModel)]="typeAffiliate" readonly>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Tipo de Consulta</label>
+      <select class="form-control" formControlName="categoryMedicalName" (change)="getidCategory($event.target.value)">
+        <option [value]="medicalCategory.id" *ngFor="let medicalCategory of medicalCategories">
+          {{medicalCategory.categoryMedicalName}}</option>
+      </select>
+    </div>
+    <div class="mb-3" *ngIf="createAppoinmentForm.get('categoryMedicalName')">
+      <label class="form-label">Valor Consulta</label>
+      <input type="number" class="form-control" formControlName="priceCategory" [(ngModel)]="valuePriceCategory"
+        readonly>
+    </div>
+    <div class="mb-3" *ngIf="createAppoinmentForm.get('categoryMedicalName')">
+      <label class="form-label">Descuento</label>
+      <select class="form-control" formControlName="discount" (change)="getPercentValue($event.target.value)">
+        <option [value]="discount.percent" *ngFor="let discount of discounts"> {{discount.name}} </option>
       </select>
     </div>
     <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Fecha Consulta</label>
+      <label class="form-label">Fecha Consulta</label>
       <input class="form-control" placeholder="Fecha consulta" bsDatepicker
-        [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-blue' }"
-        [daysDisabled]="[6,0]" [minDate]="minDate" placement="right">
+        [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-blue' }" [daysDisabled]="[6,0]"
+        [minDate]="minDate" placement="right" formControlName="appoinmentDate">
     </div>
-
-    <div class=" mb-3">
-      <label for="exampleInputEmail1" class="form-label">Gasto Total</label>
-      <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" readonly="true">
+    <div class="mb-3">
+      <label class="form-label">Hora consulta</label>
+      <select class="form-control" formControlName="hour">
+        <option></option>
+      </select>
     </div>
-    <button type="submit" class="btn">Crear cita</button>
+    <div class="mb-3">
+      <label class="form-label">Gasto Total</label>
+      <input type="number" class="form-control" formControlName="total" [(ngModel)]="total" readonly>
+    </div>
+    <button type="submit" class="btn" [disabled]="createAppoinmentForm.invalid">Crear cita</button>
   </form>
 </div>

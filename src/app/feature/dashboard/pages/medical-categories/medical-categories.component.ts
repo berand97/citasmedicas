@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ModalGlobalService } from '@core/services/modal-global.service';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
@@ -11,7 +11,7 @@ import { MedicalCategoryService } from '../../shared/service/medical-category.se
   templateUrl: './medical-categories.component.html',
   styleUrls: ['./medical-categories.component.scss']
 })
-export class MedicalCategoriesComponent implements OnInit {
+export class MedicalCategoriesComponent implements OnInit, OnDestroy {
 
   listSubscribers: Subscription[] = [];
   medicalCategories: MedicalCategory[];
@@ -41,13 +41,13 @@ export class MedicalCategoriesComponent implements OnInit {
     this.medicalCategoriesService.getAllCategories()
       .subscribe((data: MedicalCategory[]) => {
         this.medicalCategories = data;
-      })
+      });
   }
 
   listenObserver = () => {
     const observer1$ = this.modalGlobalService.event.subscribe(() => {
       this.loadMedicalCategories();
-    })
+    });
 
     this.listSubscribers = [observer1$];
   }
