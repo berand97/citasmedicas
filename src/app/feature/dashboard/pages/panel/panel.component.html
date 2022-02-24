@@ -1,3 +1,29 @@
 <div class="container-fluid">
-
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <caption>Citas creadas</caption>
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre Paciente</th>
+          <th scope="col">Documento / numero </th>
+          <th scope="col">Tipo de consulta</th>
+          <th scope="col">Fecha consulta</th>
+          <th scope="col">Hora consulta</th>
+          <th scope="col">Valor consulta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let appoinment of appoinments; index as i">
+          <th scope="row">{{i+1}}</th>
+          <td>{{appoinment.name}} {{appoinment.lastName}}</td>
+          <td>{{appoinment.typeDocument}}: {{appoinment.numberDocument}}</td>
+          <td>{{appoinment.categoryMedicalName}}</td>
+          <td>{{appoinment.appoinmentDate | date:'dd/MM/yyyy'}}</td>
+          <td>{{appoinment.hour}}</td>
+          <td>{{appoinment.total}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

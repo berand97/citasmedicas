@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ModalGlobalService } from '@core/services/modal-global.service';
+import Swal from 'sweetalert2';
 import { MedicalCategory } from '../../shared/interfaces/medical-category.interface';
 import { Charge } from '../../shared/interfaces/price.interface';
 import { User } from '../../shared/interfaces/user.interface';
+import { HOURS } from '../../shared/models/hours.model';
+import { AppoinmentService } from '../../shared/service/appoinment.service';
 import { ChargeService } from '../../shared/service/charge.service';
 import { MedicalCategoryService } from '../../shared/service/medical-category.service';
 import { UserService } from '../../shared/service/user.service';
@@ -12,6 +16,7 @@ import { UserService } from '../../shared/service/user.service';
   styleUrls: ['./create-appoinment.component.scss']
 })
 export class CreateAppoinmentComponent implements OnInit {
+
 
   id: string;
   total: number;
@@ -27,8 +32,10 @@ export class CreateAppoinmentComponent implements OnInit {
 
   medicalCategories: MedicalCategory[] = [];
   discounts: Charge[] = [];
+  hours = HOURS;
 
   minDate: Date;
+
 
   createAppoinmentForm = this.fb.group({
     name: ['', [Validators.required]],
@@ -39,6 +46,7 @@ export class CreateAppoinmentComponent implements OnInit {
     typeAffiliate: ['', [Validators.required]],
     priceCategory: [],
     discount: [],
+    hour: ['', [Validators.required]],
     categoryMedicalName: ['', [Validators.required]],
     appoinmentDate: ['', [Validators.required]],
     total: [Validators.required],
@@ -48,7 +56,9 @@ export class CreateAppoinmentComponent implements OnInit {
     private fb: FormBuilder,
     private medicalCategoriesService: MedicalCategoryService,
     private userService: UserService,
-    private chargeService: ChargeService
+    private chargeService: ChargeService,
+    private modalGlobalService: ModalGlobalService,
+    private appoinmentService: AppoinmentService
   ) {
     this.minDate = new Date();
     this.minDate.setDate(this.minDate.getDate() + 1);
@@ -73,11 +83,6 @@ export class CreateAppoinmentComponent implements OnInit {
       });
   }
 
-  createAppoinment() {
-    console.log(this.createAppoinmentForm.value);
-  }
-
-
   existAffiliate(numberDocument) {
     this.documentAffilliate = numberDocument;
     this.userService.getUserId(numberDocument)
@@ -96,13 +101,30 @@ export class CreateAppoinmentComponent implements OnInit {
   getidCategory(id: string) {
     this.medicalCategoriesService.getIdCategory(id)
       .subscribe((data: MedicalCategory) => {
-        this.valuePriceCategory = data.priceCategory;
+        this.valuePriceCategory = data[0].priceCategory;
       });
   }
 
   getPercentValue(percent: number) {
     this.discount = percent;
     this.total = (this.valuePriceCategory - (this.valuePriceCategory * this.discount));
+  }
+
+  createAppoinment() {
+    const body = this.createAppoinmentForm.value;
+    this.appoinmentService.createAppoinment(body)
+      .subscribe(() => {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Se ha creado la cita satisfactoriamente',
+          showConfirmButton: false,
+          timer: 3000
+        });
+        this.createAppoinmentForm.reset();
+        this.modalGlobalService.event.emit('close');
+      });
+
   }
 
 

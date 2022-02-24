@@ -28,7 +28,7 @@
     <div class="mb-3">
       <label class="form-label">Tipo de Consulta</label>
       <select class="form-control" formControlName="categoryMedicalName" (change)="getidCategory($event.target.value)">
-        <option [value]="medicalCategory.id" *ngFor="let medicalCategory of medicalCategories">
+        <option [value]="medicalCategory.categoryMedicalName" *ngFor="let medicalCategory of medicalCategories">
           {{medicalCategory.categoryMedicalName}}</option>
       </select>
     </div>
@@ -45,14 +45,19 @@
     </div>
     <div class="mb-3">
       <label class="form-label">Fecha Consulta</label>
-      <input class="form-control" placeholder="Fecha consulta" bsDatepicker
-        [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-blue' }" [daysDisabled]="[6,0]"
-        [minDate]="minDate" placement="right" formControlName="appoinmentDate">
+      <input class="form-control" placeholder="Fecha consulta"
+        bsDatepicker
+        [bsConfig]="{customTodayClass: 'custom-today-class', dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-red' }"
+        [daysDisabled]="[6,0]"
+        [minDate]="minDate"
+        placement="right"
+        formControlName="appoinmentDate">
     </div>
     <div class="mb-3">
       <label class="form-label">Hora consulta</label>
-      <select class="form-control" formControlName="hour">
-        <option></option>
+      <select class="form-control" formControlName="hour" >
+        <option selected disabled>Seleccione una hora</option>
+        <option [value]="hour.hour" *ngFor="let hour of hours">{{hour.hour}}</option>
       </select>
     </div>
     <div class="mb-3">

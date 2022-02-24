@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpService } from '@core/services/http.service';
 
 import { PanelComponent } from './panel.component';
 
@@ -8,9 +10,13 @@ describe('PanelComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PanelComponent ]
+      declarations: [PanelComponent],
+      imports: [HttpClientModule],
+      providers: [
+        HttpService
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

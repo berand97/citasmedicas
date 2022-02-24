@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Appoinment } from '../../shared/interfaces/appoinment.interface';
+import { AppoinmentService } from '../../shared/service/appoinment.service';
 
 @Component({
   selector: 'app-panel',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PanelComponent implements OnInit {
 
-  constructor() { }
+  appoinments: Appoinment[];
+
+  constructor(
+    private appoinmentService: AppoinmentService
+  ) { }
 
   ngOnInit(): void {
+    this.getAppoinment();
+  }
+
+  getAppoinment() {
+    this.appoinmentService.getAllAppoinments()
+      .subscribe((data: Appoinment[]) => {
+        this.appoinments = data;
+      });
   }
 
 }
