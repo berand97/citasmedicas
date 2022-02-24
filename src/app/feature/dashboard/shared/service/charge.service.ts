@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '@core/services/http.service';
 import { environment } from 'src/environments/environment';
-import { DashboardModule } from '../../dashboard.module';
 import { Charge } from '../interfaces/price.interface';
 
 @Injectable({
-  providedIn: DashboardModule
+  providedIn: 'root'
 })
 export class ChargeService {
 

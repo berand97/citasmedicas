@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '@core/services/http.service';
 import { environment } from 'src/environments/environment';
-import { DashboardModule } from '../../dashboard.module';
 import { MedicalCategory } from '../interfaces/medical-category.interface';
 
 @Injectable({
-  providedIn: DashboardModule
+  providedIn: 'root'
 })
 export class MedicalCategoryService {
 
@@ -27,7 +26,7 @@ export class MedicalCategoryService {
   }
 
   getIdCategory(id: string) {
-    return this.http.doGet<MedicalCategory>(`${this.URL}/categorias/${id}`,
+    return this.http.doGet<MedicalCategory>(`${this.URL}/categorias?categoryMedicalName=${id}`,
       this.http.optsName('obtener id de categoria medica'));
   }
 

@@ -3,11 +3,10 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { DashboardModule } from '../../dashboard.module';
 import { User } from '../interfaces/user.interface';
 
 @Injectable({
-  providedIn: DashboardModule,
+  providedIn: 'root'
 })
 export class UserService {
 
