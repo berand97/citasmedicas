@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ModalGlobalService } from '@core/services/modal-global.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import Swal from 'sweetalert2';
 import { MedicalCategoryService } from '../../shared/service/medical-category.service';
 
 @Component({
@@ -31,6 +32,13 @@ export class CreateMedicalCategorieComponent implements OnInit {
 
     this.medicalCategory.createMedicalCategory(body)
       .subscribe( () => {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Se ha creado la categoria satisfactoriamente',
+          showConfirmButton: false,
+          timer: 3000
+        });
         this.modalGlobalService.event.emit('close');
       });
   }

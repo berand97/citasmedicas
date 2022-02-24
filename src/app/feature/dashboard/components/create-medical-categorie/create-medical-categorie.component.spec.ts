@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { MedicalCategoryService } from '../../shared/service/medical-category.service';
 
 import { CreateMedicalCategorieComponent } from './create-medical-categorie.component';
 
@@ -8,9 +11,13 @@ describe('CreateMedicalCategorieComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreateMedicalCategorieComponent ]
+      imports: [ReactiveFormsModule],
+      declarations: [CreateMedicalCategorieComponent],
+      providers: [NgbActiveModal,
+        { provide: MedicalCategoryService, useValue: MedicalCategoryService}
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
