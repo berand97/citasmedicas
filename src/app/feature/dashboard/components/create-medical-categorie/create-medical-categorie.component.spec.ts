@@ -39,11 +39,11 @@ describe('CreateMedicalCategorieComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Created a medical category', ()=>{
+  it('Created a medical category', () => {
     expect(component.createMedicalCategoryForm.valid).toBeFalsy();
     component.createMedicalCategoryForm.controls.categoryMedicalName.setValue('Odontologia');
     component.createMedicalCategoryForm.controls.priceCategory.setValue(60000);
     expect(component.createMedicalCategoryForm.valid).toBeTruthy();
     component.createMedicalCategory();
-  })
+  });
 });

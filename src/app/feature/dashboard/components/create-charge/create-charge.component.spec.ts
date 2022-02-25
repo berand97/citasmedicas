@@ -38,16 +38,17 @@ describe('CreateChargeComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('error typing a value greater than 1', ()=>{
-    expect(component.createChargeForm.controls.percent.setValue(2)).toBeFalsy()
-  })
+  it('error typing a value greater than 1', () => {
+    expect(component.createChargeForm.controls.percent.setValue(2)).toBeFalsy();
+  });
 
-  it('Create a Discount', ()=>{
+  it('Create a Discount', () => {
     expect(component.createChargeForm.valid).toBeFalsy();
     component.createChargeForm.controls.name.setValue('Descuento por nomina');
     component.createChargeForm.controls.type.setValue('Descuento');
     component.createChargeForm.controls.percent.setValue(1);
     expect(component.createChargeForm.valid).toBeTruthy();
+    expect(component.createChargeForm.valid).toBeTrue();
     component.createCharge();
-  })
+  });
 });

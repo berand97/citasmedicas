@@ -24,7 +24,7 @@ export class CreateMedicalCategorieComponent implements OnInit {
     this.buildForm();
   }
 
-  buildForm(): void{
+  buildForm(): void {
     this.createMedicalCategoryForm = this.fb.group({
       categoryMedicalName: ['', [Validators.required]],
       priceCategory: ['', [Validators.required, Validators.minLength(4)]]
@@ -33,7 +33,7 @@ export class CreateMedicalCategorieComponent implements OnInit {
 
   createMedicalCategory() {
     const body = this.createMedicalCategoryForm.value;
-    this.medicalCategory.createMedicalCategory(body)
+    this.medicalCategory.createMedicalCategory(body);
   }
 
 }
