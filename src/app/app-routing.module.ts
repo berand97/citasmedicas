@@ -5,9 +5,8 @@ import { HomeComponent } from '@home/home.component'; */
 
 
 const routes: Routes = [
-  { path: 'auth', loadChildren: () => import('./feature/auth/auth.module').then(mod => mod.AuthModule) },
   { path: 'dashboard', loadChildren: () => import('./feature/dashboard/dashboard.module').then(mod => mod.DashboardModule) },
-  { path: '**', redirectTo: 'auth' },
+  { path: '**', redirectTo: 'dashboard' },
   /* { path: 'producto', loadChildren: () => import('@producto/producto.module').then(mod => mod.ProductoModule) }, */
   /* { path: 'home', component: HomeComponent, canActivate: [SecurityGuard]  }, */
 
