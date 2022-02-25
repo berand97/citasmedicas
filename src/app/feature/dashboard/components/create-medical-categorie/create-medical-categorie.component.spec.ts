@@ -1,8 +1,9 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpService } from '@core/services/http.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { MedicalCategoryService } from '../../shared/service/medical-category.service';
-
+import { DashboardRoutingModule } from '../../dashboard.routing';
 import { CreateMedicalCategorieComponent } from './create-medical-categorie.component';
 
 describe('CreateMedicalCategorieComponent', () => {
@@ -11,10 +12,18 @@ describe('CreateMedicalCategorieComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule],
-      declarations: [CreateMedicalCategorieComponent],
-      providers: [NgbActiveModal,
-        { provide: MedicalCategoryService, useValue: MedicalCategoryService}
+      imports: [
+        DashboardRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientTestingModule
+      ],
+      declarations: [
+        CreateMedicalCategorieComponent
+      ],
+      providers: [
+        HttpService,
+        NgbActiveModal
       ]
     })
       .compileComponents();
@@ -29,4 +38,12 @@ describe('CreateMedicalCategorieComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Created a medical category', ()=>{
+    expect(component.createMedicalCategoryForm.valid).toBeFalsy();
+    component.createMedicalCategoryForm.controls.categoryMedicalName.setValue('Odontologia');
+    component.createMedicalCategoryForm.controls.priceCategory.setValue(60000);
+    expect(component.createMedicalCategoryForm.valid).toBeTruthy();
+    component.createMedicalCategory();
+  })
 });
