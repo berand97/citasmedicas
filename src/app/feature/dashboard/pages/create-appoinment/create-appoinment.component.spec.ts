@@ -34,14 +34,14 @@ describe('CreateAppoinmentComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Appoinment date  is required', ()=>{
-    const date = component.createAppoinmentForm.get('appoinmentDate')
+  it('Appoinment date  is required', () => {
+    const date = component.createAppoinmentForm.get('appoinmentDate');
 
     date.setValue('');
     expect(date.valid).toBeFalse();
-  })
+  });
 
-  it('Created appoinment', ()=>{
+  it('Created appoinment', () => {
     expect(component.createAppoinmentForm.valid).toBeFalsy();
     component.createAppoinmentForm.controls.name.setValue('Leonel');
     component.createAppoinmentForm.controls.lastName.setValue('Patiño');
@@ -57,6 +57,6 @@ describe('CreateAppoinmentComponent', () => {
     component.createAppoinmentForm.controls.total.setValue(25000);
     expect(component.createAppoinmentForm.valid).toBeTruthy();
     component.createAppoinment();
-  })
+  });
 
 });

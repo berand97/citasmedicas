@@ -1,17 +1,19 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { UserService } from '../../shared/service/user.service';
-
+import { HttpService } from '@core/services/http.service';
 import { UsersComponent } from './users.component';
 
-xdescribe('UsersComponent', () => {
+describe('UsersComponent', () => {
   let component: UsersComponent;
   let fixture: ComponentFixture<UsersComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [UsersComponent],
+      imports: [
+        HttpClientTestingModule
+      ],
       providers: [
-        { provide: UserService, useValue: UserService }
+        HttpService
       ]
     })
       .compileComponents();

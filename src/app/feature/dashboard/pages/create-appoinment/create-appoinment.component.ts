@@ -115,7 +115,7 @@ export class CreateAppoinmentComponent implements OnInit {
 
   createAppoinment() {
     const body = this.createAppoinmentForm.value;
-    this.appoinmentService.createAppoinment(body)
+    this.appoinmentService.createAppoinment(body);
 
   }
 }
