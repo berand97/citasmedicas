@@ -8,7 +8,7 @@ export interface Appoinment {
   typeAffiliate: string;
   priceCategory: number;
   discount: string;
-  hour: null;
+  hour: string;
   categoryMedicalName: string;
   appoinmentDate: string;
   total: number;

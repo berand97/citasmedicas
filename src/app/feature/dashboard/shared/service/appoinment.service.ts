@@ -11,15 +11,15 @@ export class AppoinmentService {
   URL: string = environment.endpoint;
 
   constructor(
-    private http: HttpService
+    protected http: HttpService
   ) { }
 
-  getAllAppoinments() {
+  public getAllAppoinments() {
     return this.http.doGet<Appoinment[]>(`${this.URL}/citas`,
       this.http.optsName('Obtener todas las citas'));
   }
 
-  createAppoinment(appoinment: Appoinment) {
+  public createAppoinment(appoinment: Appoinment) {
     return this.http.doPost<Appoinment, boolean>(`${this.URL}/citas`, appoinment,
       this.http.optsName('Crear nueva cita'));
   }
