@@ -1,4 +1,5 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { HttpService } from '@core/services/http.service';
 import { environment } from 'src/environments/environment';
@@ -17,9 +18,10 @@ describe('ChargeService', () => {
         HttpClientTestingModule
       ],
       providers: [
-        HttpService,
+        HttpService, ChargeService
 
-      ]
+      ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
     });
     service = TestBed.inject(ChargeService);
     httpMock = TestBed.inject(HttpTestingController);
@@ -38,8 +40,8 @@ describe('ChargeService', () => {
     const dummyCharges = [
       new ChargeModel(
         1,
-       'Cargo por Consulta en día Festivo',
-       'Cargo',
+        'Cargo por Consulta en día Festivo',
+        'Cargo',
         1
       )
     ];

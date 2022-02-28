@@ -1,8 +1,13 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpService } from '@core/services/http.service';
 import { DashboardRoutingModule } from '../../dashboard.routing';
+import { AppoinmentService } from '../../shared/service/appoinment.service';
+import { ChargeService } from '../../shared/service/charge.service';
+import { MedicalCategoryService } from '../../shared/service/medical-category.service';
+import { UserService } from '../../shared/service/user.service';
 import { CreateAppoinmentComponent } from './create-appoinment.component';
 
 describe('CreateAppoinmentComponent', () => {
@@ -11,14 +16,20 @@ describe('CreateAppoinmentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      schemas: [NO_ERRORS_SCHEMA],
       imports: [
         DashboardRoutingModule,
         ReactiveFormsModule,
         FormsModule,
-        HttpClientTestingModule],
+        HttpClientTestingModule,
+      ],
       declarations: [CreateAppoinmentComponent],
       providers: [
-        HttpService
+        HttpService,
+        MedicalCategoryService,
+        UserService,
+        ChargeService,
+        AppoinmentService
       ]
     })
       .compileComponents();

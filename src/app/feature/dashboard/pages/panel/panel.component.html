@@ -14,15 +14,17 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let appoinment of appoinments; index as i">
-          <th scope="row">{{i+1}}</th>
-          <td>{{appoinment.name}} {{appoinment.lastName}}</td>
-          <td>{{appoinment.typeDocument}}: {{appoinment.numberDocument}}</td>
-          <td>{{appoinment.categoryMedicalName}}</td>
-          <td>{{appoinment.appoinmentDate | date:'dd/MM/yyyy'}}</td>
-          <td>{{appoinment.hour}}</td>
-          <td>{{appoinment.total | currency}}</td>
-        </tr>
+        <ng-template *ngFor="let appoinment of appoinments; index as i">
+          <tr>
+            <td scope="row">{{i+1}}</td>
+            <td>{{appoinment.name}} {{appoinment.lastName}}</td>
+            <td>{{appoinment.typeDocument}}: {{appoinment.numberDocument}}</td>
+            <td>{{appoinment.categoryMedicalName}}</td>
+            <td>{{appoinment.appoinmentDate | date:'dd/MM/yyyy'}}</td>
+            <td>{{appoinment.hour}}</td>
+            <td>{{appoinment.total | currency}}</td>
+          </tr>
+        </ng-template>
       </tbody>
     </table>
   </div>

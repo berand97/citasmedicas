@@ -3,9 +3,7 @@ import { HttpService } from '@core/services/http.service';
 import { environment } from 'src/environments/environment';
 import { MedicalCategory } from '../interfaces/medical-category.interface';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class MedicalCategoryService {
 
   URL: string = environment.endpoint;

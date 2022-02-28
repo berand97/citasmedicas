@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-lg-12">
       <table class="table table-striped">
-        <caption>Tabla de descuentos y cargos</caption>
+        <caption>Tabla de descuentos y cargos creados</caption>
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -12,12 +12,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let charge of charges; index as i">
-            <th scope="row">{{ i + 1 }}</th>
-            <td>{{charge.type}} </td>
-            <td>{{charge.name}} </td>
-            <td>{{charge.percent | percent}}</td>
-          </tr>
+          <ng-template *ngFor="let charge of charges; index as i">
+            <tr >
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{charge.type}} </td>
+              <td>{{charge.name}} </td>
+              <td>{{charge.percent | percent}}</td>
+            </tr>
+          </ng-template>
         </tbody>
       </table>
       <button class="btn mt-3" (click)="createCharge()">Crear nuevo cargo</button>

@@ -1,4 +1,8 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { DiscountComponent } from '../discount/discount.component';
+import { MedicalCategoriesComponent } from '../medical-categories/medical-categories.component';
 
 import { CategoriesComponent } from './categories.component';
 
@@ -8,9 +12,12 @@ describe('CategoriesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CategoriesComponent ]
+      imports: [TabsModule.forRoot()],
+      declarations: [CategoriesComponent],
+      providers: [DiscountComponent, MedicalCategoriesComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

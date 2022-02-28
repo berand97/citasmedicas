@@ -3,9 +3,7 @@ import { HttpService } from '@core/services/http.service';
 import { environment } from 'src/environments/environment';
 import { Appoinment } from '../interfaces/appoinment.interface';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AppoinmentService {
 
   URL: string = environment.endpoint;

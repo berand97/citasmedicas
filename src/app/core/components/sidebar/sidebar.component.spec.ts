@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { DashboardRoutingModule } from 'src/app/feature/dashboard/dashboard.routing';
 
 import { SidebarComponent } from './sidebar.component';
 
@@ -8,9 +10,14 @@ describe('SidebarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SidebarComponent ]
+      imports: [
+        RouterTestingModule,
+        DashboardRoutingModule
+      ],
+      declarations: [SidebarComponent],
+
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

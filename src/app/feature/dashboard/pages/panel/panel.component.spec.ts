@@ -1,6 +1,8 @@
-import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpService } from '@core/services/http.service';
+import { AppoinmentService } from '../../shared/service/appoinment.service';
 
 import { PanelComponent } from './panel.component';
 
@@ -11,9 +13,12 @@ describe('PanelComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [PanelComponent],
-      imports: [HttpClientModule],
+      imports: [
+        HttpClientTestingModule,
+        CommonModule
+      ],
       providers: [
-        HttpService
+        HttpService, AppoinmentService
       ]
     })
       .compileComponents();

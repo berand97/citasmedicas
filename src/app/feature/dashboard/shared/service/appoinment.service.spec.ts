@@ -4,6 +4,7 @@ import { HttpService } from '@core/services/http.service';
 import { AppoinmentService } from './appoinment.service';
 import { AppoinmentModel } from '../models/appoinment.model';
 import { environment } from 'src/environments/environment';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('AppoinmentService', () => {
   let service: AppoinmentService;
@@ -16,8 +17,9 @@ describe('AppoinmentService', () => {
         HttpClientTestingModule
       ],
       providers: [
-        HttpService
-      ]
+        HttpService, AppoinmentService
+      ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
     });
     service = TestBed.inject(AppoinmentService);
     httpMock = TestBed.inject(HttpTestingController);
@@ -71,7 +73,7 @@ describe('AppoinmentService', () => {
         expect(appoinment.length).toBe(2);
         expect(appoinment).toEqual(dummyAppoinment);
       });
-    const  req = httpMock.expectOne(apiGet);
+    const req = httpMock.expectOne(apiGet);
     expect(req.request.method).toBe('GET');
     req.flush(dummyAppoinment);
   });

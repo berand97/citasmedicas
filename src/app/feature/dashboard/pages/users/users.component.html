@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-lg-10">
       <table class="table table-striped">
-        <caption>Usuarios creados</caption>
+        <caption>Tabla de usuarios creados</caption>
         <thead>
           <caption class="title">Usuarios creados</caption>
           <tr>
@@ -14,15 +14,17 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let user of users; index as i">
-            <th scope="row">{{ i + 1 }}</th>
-            <td>
-              {{user.name}} {{user.lastName}}
-            </td>
-            <td>{{user.numberDocument}}</td>
-            <td>{{user.healtyCompany}}</td>
-            <td>{{user.typeAffiliate}}</td>
-          </tr>
+          <!-- <ng-template  *ngFor="let user of users; index as i">
+            <tr>
+              <td scope="row">{{ i + 1 }}</td>
+              <td>
+                {{user.name}} {{user.lastName}}
+              </td>
+              <td>{{user.numberDocument}}</td>
+              <td>{{user.healtyCompany}}</td>
+              <td>{{user.typeAffiliate}}</td>
+            </tr>
+          </ng-template> -->
         </tbody>
       </table>
       <div class="mt-5">

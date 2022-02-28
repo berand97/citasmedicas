@@ -1,6 +1,9 @@
+import { CommonModule } from '@angular/common';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpService } from '@core/services/http.service';
+import { UserService } from '../../shared/service/user.service';
 import { UsersComponent } from './users.component';
 
 describe('UsersComponent', () => {
@@ -9,11 +12,14 @@ describe('UsersComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      schemas: [NO_ERRORS_SCHEMA],
       imports: [
-        HttpClientTestingModule
+        HttpClientTestingModule,
+        CommonModule
       ],
       providers: [
-        HttpService
+        HttpService,
+        UserService
       ]
     })
       .compileComponents();

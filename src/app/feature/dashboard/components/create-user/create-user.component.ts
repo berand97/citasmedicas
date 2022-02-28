@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ModalGlobalService } from '@core/services/modal-global.service';
+import { NotificationService } from '@core/services/notification.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import Swal from 'sweetalert2';
 import { UserService } from '../../shared/service/user.service';
 
 @Component({
@@ -23,9 +22,9 @@ export class CreateUserComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private modalGlobalService: ModalGlobalService,
     private userService: UserService,
-    public activeModal: NgbActiveModal
+    public activeModal: NgbActiveModal,
+    private alertService: NotificationService
   ) { }
 
   ngOnInit(): void {
@@ -33,17 +32,8 @@ export class CreateUserComponent implements OnInit {
 
 
   createUser() {
-    this.userService.createUser(this.createUserForm.value)
-      .subscribe( () => {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Se ha creado el usuario satisfactoriamente',
-          showConfirmButton: false,
-          timer: 3000
-        });
-        this.modalGlobalService.event.emit('close');
-      });
+    this.userService.createUser(this.createUserForm.value);
+    this.alertService.sucess('el Usuario');
   }
 
 

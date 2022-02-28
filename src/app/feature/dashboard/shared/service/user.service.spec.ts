@@ -17,7 +17,7 @@ describe('UserService', () => {
         HttpClientTestingModule
       ],
       providers: [
-        HttpService,
+        HttpService, UserService
       ]
     });
     service = TestBed.inject(UserService);

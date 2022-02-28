@@ -12,6 +12,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
+import { DashboardModule } from './feature/dashboard/dashboard.module';
 
 
 // AoT requires an exported function for factories
@@ -29,6 +30,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     AppRoutingModule,
     ProductoModule,
     CoreModule,
+    DashboardModule,
     BrowserAnimationsModule,
     NgbModule,
     TranslateModule.forRoot({

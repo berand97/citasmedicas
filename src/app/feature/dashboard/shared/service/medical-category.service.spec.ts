@@ -1,4 +1,5 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { HttpService } from '@core/services/http.service';
 import { environment } from 'src/environments/environment';
@@ -17,9 +18,10 @@ describe('MedicalCategoryService', () => {
         HttpClientTestingModule
       ],
       providers: [
-        HttpService,
+        HttpService, MedicalCategoryService
 
-      ]
+      ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
     });
     service = TestBed.inject(MedicalCategoryService);
     httpMock = TestBed.inject(HttpTestingController);

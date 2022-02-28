@@ -3,9 +3,7 @@ import { HttpService } from '@core/services/http.service';
 import { environment } from 'src/environments/environment';
 import { Charge } from '../interfaces/price.interface';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ChargeService {
 
   URL: string = environment.endpoint;

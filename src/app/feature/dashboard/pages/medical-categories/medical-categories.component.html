@@ -1,9 +1,8 @@
-
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-12">
       <table class="table table-striped">
-        <caption>Tabla de cargos y descuentos</caption>
+        <caption>Tabla de Categorias Medicas</caption>
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -12,13 +11,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let category of medicalCategories; index as i">
-            <th scope="row">{{ i + 1 }}</th>
-            <td>
-              {{category.categoryMedicalName}}
-            </td>
-            <td>{{category.priceCategory | currency:"COP":"$"}}</td>
-          </tr>
+          <ng-template *ngFor="let category of medicalCategories; index as i">
+            <tr>
+              <th scope="row">{{ i + 1 }}</th>
+              <td>
+                {{category.categoryMedicalName}}
+              </td>
+              <td>{{category.priceCategory | currency:"COP":"$"}}</td>
+            </tr>
+          </ng-template>
         </tbody>
       </table>
       <div class="mt-5">
